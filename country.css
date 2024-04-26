@@ -14,6 +14,7 @@
 .country-details {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 64px;
     margin-top: 64px;
 }
@@ -54,7 +55,7 @@
 @media(max-width: 940px) {
     .country-details {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         margin-top: 32px;
         gap: 16px;
     }
