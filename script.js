@@ -1,16 +1,19 @@
 const countriesContainer = document.querySelector('.countries-container')
 const filterByRegion = document.querySelector('.filter-by-region')
-const searchInput = document.querySelector('.search-container input')
+const searchInput = document.querySelector('#search-input')
 const themeChanger = document.querySelector('.theme-changer')
 
 let allCountriesData;
 let filteredCountries;
 let regionCountries;
+
 fetch('https://restcountries.com/v3.1/all')
   .then((res) => res.json())
   .then((data) => {
     renderCountries(data)
     allCountriesData = data
+    regionCountries=allCountriesData
+    filteredCountries=allCountriesData;
   })
 
 filterByRegion.addEventListener('change', (e) => {
@@ -22,24 +25,26 @@ if(filterByRegion.value=='all'){
     renderCountries(filteredCountries)
     return
   }
-   filteredCountries = regionCountries.filter((country) => country.name.common.toLowerCase().includes(searchInput.value.toLowerCase().trim()))
+  filteredCountries = regionCountries.filter((country) => country.name.common.toLowerCase().includes(searchInput.value.toLowerCase().trim()))
   renderCountries(filteredCountries)
   return
-}
-
-
-regionCountries = allCountriesData.filter((country) => country.region.toLowerCase().includes(filterByRegion.value.toLowerCase()))
-
-if(searchInput.value.trim()==""){
-  filteredCountries=regionCountries;
+  }
+  regionCountries = allCountriesData.filter((country) => country.region.toLowerCase().includes(filterByRegion.value.toLowerCase()))
+  if(searchInput.value.trim()==""){
+    filteredCountries=regionCountries;
+    renderCountries(filteredCountries)
+    return
+  }
+  
+  filteredCountries = regionCountries.filter((country) => country.name.common.toLowerCase().includes(searchInput.value.toLowerCase().trim()))
   renderCountries(filteredCountries)
   return
+
 }
- filteredCountries = regionCountries.filter((country) => country.name.common.toLowerCase().includes(searchInput.value.toLowerCase().trim()))
-renderCountries(filteredCountries)
+)
 
 
-})
+
 
 function renderCountries(data) {
   countriesContainer.innerHTML = ''

@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Countries</title>
+    <title>Countries Api</title>
+
+    <!-- font awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
@@ -12,31 +14,37 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    <!-- Google fonts -->
     <link
       href="https://fonts.googleapis.com/css?family=Nunito:300,regular,500,600,700,800"
       rel="stylesheet"
     />
+    <!-- style for index page -->
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
+    <!-- js for index page -->
+    <script src="script.js" defer type="module"></script>
   </head>
   <body>
     <!-- Top header section -->
     <header class="header-container">
-      <div class="header-content">
-        <h2 class="title"><a href="/">Where in the world?</a></h2>
+    
+        <a href="/"> <h2 class="title">Where in the world?</h2></a>
+       
         <button class="theme-changer"><i class="fa-regular fa-moon"></i>&nbsp;&nbsp;Dark Mode</button>
-      </div>
+   
     </header>
     <main>
+      <!-- search-filter-container section -->
       <div class="search-filter-container">
         <div class="search-container">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="Search for a country...">
+          <input type="text" placeholder="Search for a country..." id="search-input">
         </div>
     <div>
-        <!-- <label for="filterRegion">Filter by Region &nbsp; &nbsp;</label> -->
-        <select class="filter-by-region">
-          <option value="all">All</option>
+        <label for="filter-region">Filter by Region &nbsp; &nbsp;</label>
+        <select class="filter-by-region" id="filter-region" >
+          <option value="all" selected>All</option>
           <option value="Africa">Africa</option>
           <option value="America">America</option>
           <option value="Asia">Asia</option>
@@ -45,6 +53,8 @@
         </select>
     </div>
       </div>
+
+      <!-- country content -->
       <div class="countries-container"></div>
     </main>
   </body>
